@@ -9,6 +9,7 @@ export function AuthProvider({children}){
 
     const [cookies, setCookie, removeCookie] = useCookies(['authToken']);
 
+    const teste = 'testeeee'
 
     const value = {
         username,

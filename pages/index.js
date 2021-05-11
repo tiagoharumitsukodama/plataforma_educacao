@@ -1,8 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Login from '../Components/login'
 import styles from '../styles/Home.module.css'
-import { AuthProvider } from './Contexts/AuthContext'
 
 import firebase from '../Repositories/firebase'
 import Teste from './teste'
@@ -36,9 +34,7 @@ export default function Home(props) {
       <Nav user={user_email}/>
 
       <main className={styles.main}>
-        <AuthProvider>
           Cookie:
-        </AuthProvider>
       </main>
 
     </div>
