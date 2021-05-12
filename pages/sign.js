@@ -1,24 +1,10 @@
-import { useAuth } from '../Hook/useAuth'
 import { Form, Button } from 'react-bootstrap'
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Nav from '../Layouts/nav'
-import {handleLogin} from '../Services/handlelogin'
 
-export default function Login(props){
+export default function Sign(){
 
-  const {setCookie, setUsername, username} = useAuth()
-  let user_email = ''
-  
-  if( props.props.user_email )
-    user_email = props.props.user_email
-
-  const handleButtonLogin = async (e) => {
-    e.preventDefault()
-
-    handleLogin('teste@teste.com', '123456')
-  }
 
     return (
         <div className={styles.container}>
@@ -33,14 +19,13 @@ export default function Login(props){
           <script
             src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
             crossorigin></script>
-  
           <script>var Alert = ReactBootstrap.Alert;</script>
         </Head>
   
-        <Nav user={user_email}/>
+        <Nav/>
   
         <main className={styles.main}>
-            <h2>Login</h2>
+            <h2>Criar usuário</h2>
             <Form style={{maxWidth:'500px'}}>
             <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
@@ -54,7 +39,12 @@ export default function Login(props){
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" />
             </Form.Group>
-            <Button variant="primary" type="submit" onClick={handleButtonLogin}>
+            <Form.Group controlId="formBasicPassword">
+                <Form.Label>Confirm password</Form.Label>
+                <Form.Control type="password" placeholder="Password" />
+            </Form.Group>
+
+            <Button variant="primary" type="submit" >
                 Submit
             </Button>
             </Form>
@@ -64,29 +54,4 @@ export default function Login(props){
 
 
     );
-}
-
-
-Login.getInitialProps = async (ctx) => {
-
-  try {
-      const authToken = ctx.req.cookies.authToken
-    
-      //const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
-      //const user = credentialUser.user.email
-    
-      const user = 'testanduuu@teste.com'
-
-      return {
-        props: {
-          user_email: user
-        }
-      }
-  } catch (error) {
-    return {
-      props: {
-        user_email: ''
-      }
-    }
-  }
 }
