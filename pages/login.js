@@ -1,10 +1,18 @@
 import { useAuth } from '../Hook/useAuth'
 import { Form, Button } from 'react-bootstrap'
+import Head from 'next/head'
+import Image from 'next/image'
+import styles from '../styles/Home.module.css'
+import Nav from '../Layouts/nav'
 
+export default function Login(props){
 
-export default function Login(){
+  const {setCookie, setUsername, username} = useAuth()
+  let user_email = ''
+  
+  if( props.props.user_email )
+    user_email = props.props.user_email
 
-    const {setCookie, setUsername, username} = useAuth()
 
     return (
         <div className={styles.container}>
@@ -49,4 +57,29 @@ export default function Login(){
 
 
     );
+}
+
+
+Login.getInitialProps = async (ctx) => {
+
+  try {
+      const authToken = ctx.req.cookies.authToken
+    
+      //const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
+      //const user = credentialUser.user.email
+    
+      const user = 'testanduuu@teste.com'
+
+      return {
+        props: {
+          user_email: user
+        }
+      }
+  } catch (error) {
+    return {
+      props: {
+        user_email: ''
+      }
+    }
+  }
 }
