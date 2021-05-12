@@ -1,10 +1,10 @@
 import firebase from '../Repositories/firebase'
 
 
-export default handleLogin = async () => {
+export const handleLogin = async (email, password) => {
         
     try {
-        const user = await firebase.auth().signInWithEmailAndPassword('teste@teste.com', '123456')
+        const user = await firebase.auth().signInWithEmailAndPassword(email, password)
 
         const user_uid = await user.user.uid
 
