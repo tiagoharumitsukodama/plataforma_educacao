@@ -2,9 +2,9 @@ import { useAuth } from '../Hook/useAuth'
 import { Form, Button } from 'react-bootstrap'
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 import Nav from '../Layouts/nav'
 import {handleLogin} from '../Services/handlelogin'
+import styles from '../styles/Login.module.css'
 
 export default function Login(props){
 
