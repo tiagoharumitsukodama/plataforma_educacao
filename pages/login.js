@@ -1,6 +1,7 @@
 import { useAuth } from '../Hook/useAuth'
 import { Form, Button } from 'react-bootstrap'
 import Image from 'next/image'
+import Link from 'next/link'
 import Nav from '../Layouts/nav'
 import {handleLogin} from '../Services/handlelogin'
 import styles from '../styles/Login.module.css'
@@ -20,29 +21,27 @@ export default function Login(props){
   }
 
     return (
-        <div className={styles.container}>
+        <div>
   
         <Nav user={user_email}/>
   
         <main className={styles.main}>
             <h2>Login</h2>
-            <Form style={{maxWidth:'500px'}}>
+            <Form className={styles.form}>
             <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
-                <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-                </Form.Text>
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="email" placeholder="exemplo@exemplo.com.br" />
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Label>Senha</Form.Label>
+                <Form.Control type="password" placeholder="Digite sua senha" />
             </Form.Group>
             <Button variant="primary" type="submit" onClick={handleButtonLogin}>
-                Submit
+                Pronto
             </Button>
             </Form>
+            <Link href='/sign' replace>Clique caso queira se cadastrar</Link>
         </main>
   
       </div>
