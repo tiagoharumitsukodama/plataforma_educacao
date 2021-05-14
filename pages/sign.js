@@ -3,8 +3,6 @@ import styles from '../styles/Home.module.css'
 import Nav from '../Layouts/nav'
 
 export default function Sign(){
-
-
     return (
         <div className={styles.container}>
   

@@ -1,9 +1,9 @@
-import { useRouter } from 'next/router'
-import Image from 'next/image'
-import styles from '../../styles/Home.module.css'
+import { useRouter } from 'next/router';
+import Image from 'next/image';
+import styles from '../../styles/Studant.module.css';
+import firebase from '../../Repositories/firebase';
+import Nav from '../../Layouts/nav';
 
-import firebase from '../../Repositories/firebase'
-import Nav from '../../Layouts/nav'
 
 export default function Studant(props){
 
@@ -21,13 +21,10 @@ export default function Studant(props){
           <Nav user={user_email}/>
     
           <main className={styles.main}>
-              
             Oi aluno { id }
-
           </main>
     
         </div>
-
     );
 }
 

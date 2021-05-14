@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import styles from '../../styles/Home.module.css'
+import styles from '../../styles/Teacher.module.css'
 
 import firebase from '../../Repositories/firebase'
 import Nav from '../../Layouts/nav'
@@ -21,13 +21,10 @@ export default function Teacher(props){
           <Nav user={user_email}/>
     
           <main className={styles.main}>
-              
             Oi { id }
-
           </main>
     
         </div>
-
     );
 }
 

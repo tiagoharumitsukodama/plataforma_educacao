@@ -1,0 +1,11 @@
+.container {
+    background-color: rgb(28, 148, 108);
+    height: 100vh;
+    width: 100vw;
+}
+
+.main {
+    background-color: blue;
+    margin: 20px 40px
+}
+
