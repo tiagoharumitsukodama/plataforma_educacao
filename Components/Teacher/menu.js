@@ -17,18 +17,24 @@ export default function Menu(){
         }
     ]
 
-    const styles = {
+    const stylesCard = {
         display: "flex",
         flexWrap: "wrap",
-        justifyContent: "space-around"
+        justifyContent: "center"
     }
 
     return (
-        <div style={styles}>
+        <div style={stylesCard}>
             {
                 menu_list.map(card => {
                     return (
-                        <Card style={{ width: '18rem', marginTop: "10px" }}>
+                        <Card 
+                            key={Math.random()}
+                            style={{ 
+                                width: '18rem', 
+                                marginTop: "10px",
+                                marginLeft: "10px",
+                                }}>
                         <Card.Body>
                             <Card.Title>{card.title}</Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>

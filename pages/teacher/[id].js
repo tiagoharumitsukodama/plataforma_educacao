@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styles from '../../styles/Teacher.module.css'
-
 import firebase from '../../Repositories/firebase'
 import Nav from '../../Layouts/nav'
 import Menu from '../../Components/Teacher/menu'
+import { Card } from 'react-bootstrap'
 
 export default function Teacher(props){
 
@@ -22,10 +22,11 @@ export default function Teacher(props){
           <Nav user={user_email}/>
     
           <main className={styles.main}>
-            Oi { id }
+            <Card className="col-10 text-center">
+              <Card.Body>Seja bem vindo, {id}</Card.Body>
+            </Card>
             <Menu />
           </main>
-    
         </div>
     );
 }
