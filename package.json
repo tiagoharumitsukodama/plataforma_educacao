@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.0.0-beta3",
+    "dotenv": "^9.0.2",
     "firebase": "^8.5.0",
     "firebase-admin": "^9.8.0",
     "next": "10.2.0",
