@@ -4,6 +4,7 @@ import styles from '../../styles/Teacher.module.css'
 
 import firebase from '../../Repositories/firebase'
 import Nav from '../../Layouts/nav'
+import Menu from '../../Components/Teacher/menu'
 
 export default function Teacher(props){
 
@@ -22,6 +23,7 @@ export default function Teacher(props){
     
           <main className={styles.main}>
             Oi { id }
+            <Menu />
           </main>
     
         </div>
