@@ -435,7 +435,7 @@
   "resolved" "https://registry.npmjs.org/@panva/asn1.js/-/asn1.js-1.0.0.tgz"
   "version" "1.0.0"
 
-"@popperjs/core@^2.8.6", "@popperjs/core@^2.9.1":
+"@popperjs/core@^2.8.6":
   "integrity" "sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q=="
   "resolved" "https://registry.npmjs.org/@popperjs/core/-/core-2.9.2.tgz"
   "version" "2.9.2"
@@ -1262,6 +1262,11 @@
   "version" "5.3.0"
   dependencies:
     "is-obj" "^2.0.0"
+
+"dotenv@^9.0.2":
+  "integrity" "sha512-I9OvvrHp4pIARv4+x9iuewrWycX6CcZtoAu1XrzPxc5UygMJXJZYmBsynku8IkrJwgypE5DGNjDPmPRhDCptUg=="
+  "resolved" "https://registry.npmjs.org/dotenv/-/dotenv-9.0.2.tgz"
+  "version" "9.0.2"
 
 "duplexify@^4.0.0", "duplexify@^4.1.1":
   "integrity" "sha512-DY3xVEmVHTv1wSzKNbwoU6nVjzI369Y6sPoqfYr0/xlx3IdX2n94xIszTcjPO8W8ZIv0Wb0PXNcjuZyT4wiICA=="
