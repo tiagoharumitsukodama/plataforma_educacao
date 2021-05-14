@@ -15,10 +15,10 @@ export default function Navegation({user}){
             <Nav className="mr-auto d-flex justify-content-center align-items-center">
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="#">Sobre</Nav.Link>
-                <Nav.Link href="#">Aluno</Nav.Link>
-                <Nav.Link href="#">Professor</Nav.Link>                
+                <Nav.Link href="/studant/55">Aluno</Nav.Link>
+                <Nav.Link href="/teacher/55">Professor</Nav.Link>                
                 <Nav.Link href="#">Contato</Nav.Link>
-                <Nav.Link href="#">Login</Nav.Link>
+                <Nav.Link href="/login">Login</Nav.Link>
                 </Nav>
                 <Nav className="mr-auto">
                     <Nav.Item>
