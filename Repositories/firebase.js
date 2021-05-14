@@ -1,11 +1,4 @@
-const firebaseConfig = {
-    apiKey: "AIzaSyDLHWwvrHsFt0h8ZOJfyW3PY6hSKgEJw1I",
-    authDomain: "himawari-2021.firebaseapp.com",
-    projectId: "himawari-2021",
-    storageBucket: "himawari-2021.appspot.com",
-    messagingSenderId: "173356834396",
-    appId: "1:173356834396:web:4c08dc541c62e4ed505099"
-  };
+const firebaseConfig = process.env.firebaseConfig
 
 
 import firebase from 'firebase'
