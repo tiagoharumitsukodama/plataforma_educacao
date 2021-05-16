@@ -23,7 +23,6 @@ export default function Login(props){
     setCookie("authToken", res)
     setUsername('teste@teste.com')
     router.push('/')
-
   }
 
     return (

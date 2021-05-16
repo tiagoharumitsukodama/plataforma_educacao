@@ -1,6 +1,17 @@
 import { Nav, Navbar, Container, Button } from 'react-bootstrap'
+import { handleLogout } from '../Services/handlelogout'
+import { useAuth } from '../Hook/useAuth'
 
 export default function Navegation({user}){
+
+    const {setCookie, setUsername} = useAuth()
+
+    const handleButtonLogout = async () => {
+        await handleLogout()
+        setCookie('authToken','')
+        setUsername('')
+    }
+
     return (
         <Navbar collapseOnSelect expand="md" bg="warning" variant="light" >
             <Navbar.Brand href="/" className='mx-3'>
@@ -30,6 +41,7 @@ export default function Navegation({user}){
                                     <Button 
                                         variant="link" 
                                         size="sm"
+                                        onClick={handleButtonLogout}
                                         > Sair
                                     </Button>
                                 </div>
