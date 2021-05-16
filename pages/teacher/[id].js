@@ -5,14 +5,17 @@ import firebase from '../../Repositories/firebase'
 import Nav from '../../Layouts/nav'
 import Menu from '../../Components/Teacher/menu'
 import { Card } from 'react-bootstrap'
+import { useHistory } from "react-router-dom";
+
 
 export default function Teacher(props){
 
     const router = useRouter()
+    let history = useHistory();
     const id = router.query.id || []
 
-   /* if( !props.props.user_email )
-    return */
+   if( !props.props.user_email )
+    history.push('/login')
 
   const user_email = props.props.user_email
 
@@ -36,11 +39,8 @@ Teacher.getInitialProps = async (ctx) => {
 
     try {
         const authToken = ctx.req.cookies.authToken
-      
-        //const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
-        //const user = credentialUser.user.email
-      
-        const user = 'testanduuu@teste.com'
+        const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
+        const user = credentialUser.user.email
   
         return {
           props: {

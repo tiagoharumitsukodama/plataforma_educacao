@@ -1,10 +1,10 @@
-const firebaseConfig = process.env.firebaseConfig
-
 import firebase from 'firebase'
 import 'firebase/app'
 import 'firebase/auth'
-import 'firebase/storage'
 import 'firebase/firestore'
+import 'firebase/storage'
+
+const firebaseConfig = process.env.firebaseConfig
 
 if( !firebase.apps.length )
   firebase.initializeApp(firebaseConfig)

@@ -10,8 +10,8 @@ export default function Studant(props){
     const router = useRouter()
     const id = router.query.id || []
 
-   /* if( !props.props.user_email )
-    return */
+   if( !props.props.user_email )
+    return router.push('/login')
 
   const user_email = props.props.user_email
 
@@ -33,12 +33,9 @@ Studant.getInitialProps = async (ctx) => {
 
     try {
         const authToken = ctx.req.cookies.authToken
-      
-        //const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
-        //const user = credentialUser.user.email
-      
-        const user = 'testanduuu@teste.com'
-  
+        const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
+        const user = credentialUser.user.email
+        
         return {
           props: {
             user_email: user
