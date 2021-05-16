@@ -1,11 +1,9 @@
 import firebase from '../Repositories/firebase'
 
-
 export const handleLogin = async (email, password) => {
         
     try {
         const user = await firebase.auth().signInWithEmailAndPassword(email, password)
-
         const user_uid = await user.user.uid
 
         const res = await fetch('http://localhost:3000/api/auth', {
@@ -20,10 +18,10 @@ export const handleLogin = async (email, password) => {
 
         const token = await res.json()
         
-        setCookie('authToken', token.authToken)
-        setUsername('usuario legal Login.js')
+        return (token.authToken)
         
     } catch (error) {
         console.log('usuario nao encontrado')
+        return ''
     }
 }

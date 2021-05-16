@@ -35,4 +35,5 @@ yarn-error.log*
 .vercel
 
 # firebase
-./firebase-admin-key.json
+firebase-admin-key.json
+himawari-2021-firebase-adminsdk-dpib2-6d273b4c4d.json

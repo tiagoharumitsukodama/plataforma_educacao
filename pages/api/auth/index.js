@@ -1,5 +1,5 @@
-import check_user from './check_user'
-import admin from '../../../Repositories/firebase-admin'
+const admin = require('../../../Repositories/firebase-admin')
+
 
 export default async (req, res) => {
 
@@ -9,8 +9,7 @@ export default async (req, res) => {
 
     const uid = req.body.uid
 
-    if( check_user(uid) ){
-
+    if( uid ){
         admin
             .auth()
             .createCustomToken(uid)
@@ -20,7 +19,6 @@ export default async (req, res) => {
             .catch((error) => {
                 res.status(400).end()
             });
-         
     }
     else
         res.status(401).end()

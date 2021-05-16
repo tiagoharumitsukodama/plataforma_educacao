@@ -1,7 +1,7 @@
 import { useAuth } from '../Hook/useAuth'
 import { Form, Button } from 'react-bootstrap'
-import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import Nav from '../Layouts/nav'
 import {handleLogin} from '../Services/handlelogin'
 import styles from '../styles/Login.module.css'
@@ -9,6 +9,7 @@ import styles from '../styles/Login.module.css'
 export default function Login(props){
 
   const {setCookie, setUsername, username} = useAuth()
+  const router = useRouter()
   let user_email = ''
   
   if( props.props.user_email )
@@ -17,7 +18,11 @@ export default function Login(props){
   const handleButtonLogin = async (e) => {
     e.preventDefault()
 
-    handleLogin('teste@teste.com', '123456')
+    const res = await handleLogin('teste@teste.com', '123456')
+
+    setCookie("authToken", res)
+    setUsername('teste@teste.com')
+    router.push('/')
   }
 
     return (
@@ -45,8 +50,6 @@ export default function Login(props){
         </main>
   
       </div>
-
-
     );
 }
 
@@ -54,18 +57,19 @@ export default function Login(props){
 Login.getInitialProps = async (ctx) => {
 
   try {
-      const authToken = ctx.req.cookies.authToken
-    
-      //const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
-      //const user = credentialUser.user.email
-    
-      const user = 'testanduuu@teste.com'
+    const authToken = ctx.req.cookies.authToken
 
-      return {
-        props: {
-          user_email: user
-        }
+    if( !authToken )
+      throw new Error('Can not find user')
+    
+    const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
+    const user = credentialUser.user.email
+    
+    return {
+      props: {
+        user_email: user
       }
+    }
   } catch (error) {
     return {
       props: {
