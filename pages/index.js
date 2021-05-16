@@ -40,7 +40,7 @@ Home.getInitialProps = async (ctx) => {
   } catch (error) {
     return {
       props: {
-        user_email: 'Anônimo'
+        user_email: ''
       }
     }
   }

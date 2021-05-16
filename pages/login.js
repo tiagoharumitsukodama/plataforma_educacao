@@ -1,6 +1,7 @@
 import { useAuth } from '../Hook/useAuth'
 import { Form, Button } from 'react-bootstrap'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import Nav from '../Layouts/nav'
 import {handleLogin} from '../Services/handlelogin'
 import styles from '../styles/Login.module.css'
@@ -8,6 +9,7 @@ import styles from '../styles/Login.module.css'
 export default function Login(props){
 
   const {setCookie, setUsername, username} = useAuth()
+  const router = useRouter()
   let user_email = ''
   
   if( props.props.user_email )
@@ -20,6 +22,8 @@ export default function Login(props){
 
     setCookie("authToken", res)
     setUsername('teste@teste.com')
+    router.push('/')
+
   }
 
     return (
