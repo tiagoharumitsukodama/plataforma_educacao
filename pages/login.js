@@ -54,16 +54,19 @@ export default function Login(props){
 Login.getInitialProps = async (ctx) => {
 
   try {
-      const authToken = ctx.req.cookies.authToken
+    const authToken = ctx.req.cookies.authToken
+
+    if( !authToken )
+      throw new Error('Can not find user')
     
-      const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
-      const user = credentialUser.user.email
+    const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
+    const user = credentialUser.user.email
     
-      return {
-        props: {
-          user_email: user
-        }
+    return {
+      props: {
+        user_email: user
       }
+    }
   } catch (error) {
     return {
       props: {

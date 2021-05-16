@@ -23,19 +23,24 @@ export default function Home(props) {
 Home.getInitialProps = async (ctx) => {
 
   try {
-      const authToken = ctx.req.cookies.authToken
-      const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
-      const user = credentialUser.user.email
+    const authToken = ctx.req.cookies.authToken
+
+    if( !authToken )
+      throw new Error('Can not find user')
     
-      return {
-        props: {
-          user_email: user
-        }
+    const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
+    const user = credentialUser.user.email
+    
+    return {
+      props: {
+        user_email: user
       }
+    }
+
   } catch (error) {
     return {
       props: {
-        user_email: ''
+        user_email: 'Anônimo'
       }
     }
   }
