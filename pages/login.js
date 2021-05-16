@@ -1,6 +1,5 @@
 import { useAuth } from '../Hook/useAuth'
 import { Form, Button } from 'react-bootstrap'
-import Image from 'next/image'
 import Link from 'next/link'
 import Nav from '../Layouts/nav'
 import {handleLogin} from '../Services/handlelogin'
@@ -17,7 +16,9 @@ export default function Login(props){
   const handleButtonLogin = async (e) => {
     e.preventDefault()
 
-    handleLogin('teste@teste.com', '123456')
+    const res = await handleLogin('teste@teste.com', '123456')
+
+    setCookie("authToken", res)
   }
 
     return (

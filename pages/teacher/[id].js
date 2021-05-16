@@ -5,17 +5,15 @@ import firebase from '../../Repositories/firebase'
 import Nav from '../../Layouts/nav'
 import Menu from '../../Components/Teacher/menu'
 import { Card } from 'react-bootstrap'
-import { useHistory } from "react-router-dom";
 
 
 export default function Teacher(props){
 
     const router = useRouter()
-    let history = useHistory();
     const id = router.query.id || []
 
    if( !props.props.user_email )
-    history.push('/login')
+    console.log(`sem dados`)
 
   const user_email = props.props.user_email
 
@@ -36,8 +34,7 @@ export default function Teacher(props){
 
 
 Teacher.getInitialProps = async (ctx) => {
-
-    try {
+    try {      
         const authToken = ctx.req.cookies.authToken
         const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
         const user = credentialUser.user.email
@@ -48,10 +45,10 @@ Teacher.getInitialProps = async (ctx) => {
           }
         }
     } catch (error) {
-      return {
-        props: {
-          user_email: ''
-        }
-      }
+
+      const res = ctx.res
+      res.writeHead(307, { Location: '/login' })
+      res.end()
+      
     }
   }
