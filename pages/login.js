@@ -19,6 +19,7 @@ export default function Login(props){
     const res = await handleLogin('teste@teste.com', '123456')
 
     setCookie("authToken", res)
+    setUsername('teste@teste.com')
   }
 
     return (
