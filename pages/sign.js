@@ -16,11 +16,11 @@ export default function Sign(){
                 <Form.Control type="email" placeholder="exemplo@exemplo.com.br" />
             </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group controlId="formBasicPassword1">
                 <Form.Label>Senha</Form.Label>
                 <Form.Control type="password" placeholder="Chave secreta para logar" />
             </Form.Group>
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group controlId="formBasicPassword2">
                 <Form.Label>Confirmar senha</Form.Label>
                 <Form.Control type="password" placeholder="Confirmar a chave secreta" />
             </Form.Group>

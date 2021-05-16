@@ -7,12 +7,8 @@ import Nav from '../../Layouts/nav';
 
 export default function Studant(props){
 
-    const router = useRouter()
-    const id = router.query.id || []
-
-   if( !props.props.user_email )
-    return router.push('/login')
-
+  const router = useRouter()
+  const id = router.query.id || []
   const user_email = props.props.user_email
 
     return (
@@ -42,10 +38,8 @@ Studant.getInitialProps = async (ctx) => {
           }
         }
     } catch (error) {
-      return {
-        props: {
-          user_email: ''
-        }
-      }
+        const res = ctx.res
+        res.writeHead(307, { Location: '/login' })
+        res.end()
     }
   }
