@@ -9,8 +9,8 @@ const firebaseConfig = process.env.firebaseConfig
 if( !firebase.apps.length )
   firebase.initializeApp(firebaseConfig)
 
-  const projectStorage = firebase.storage();
-  const projectFirestore = firebase.firestore();
+const projectStorage = firebase.storage();
+const projectFirestore = firebase.firestore();
 
 export {projectFirestore, projectStorage}
 

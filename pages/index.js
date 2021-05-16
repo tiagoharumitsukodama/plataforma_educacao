@@ -1,8 +1,5 @@
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-
 import firebase from '../Repositories/firebase'
-import Teste from './teste'
 import Nav from '../Layouts/nav'
 
 

@@ -1,11 +1,12 @@
-import admin from 'firebase-admin'
-
+const admin = require('firebase-admin')
 const serviceAccount = process.env.firebaseAdminKey
+
 
 if( !admin.apps.length ){
   admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
+    credential: admin.credential.cert(serviceAccount),
   });
+
 }
 
-export default admin
+module.exports = admin
