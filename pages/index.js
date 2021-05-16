@@ -2,6 +2,7 @@ import styles from '../styles/Home.module.css'
 import firebase from '../Repositories/firebase'
 import Nav from '../Layouts/nav'
 
+import cookie from 'cookie'
 
 export default function Home(props) {
 
