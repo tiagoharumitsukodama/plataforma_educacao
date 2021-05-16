@@ -8,9 +8,6 @@ import Nav from '../Layouts/nav'
 
 export default function Home(props) {
 
-  if( !props.props.user_email )
-    return <Teste />
-
   const user_email = props.props.user_email
 
   return (
@@ -30,12 +27,9 @@ Home.getInitialProps = async (ctx) => {
 
   try {
       const authToken = ctx.req.cookies.authToken
+      const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
+      const user = credentialUser.user.email
     
-      //const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
-      //const user = credentialUser.user.email
-    
-      const user = 'testanduuu@teste.com'
-
       return {
         props: {
           user_email: user
