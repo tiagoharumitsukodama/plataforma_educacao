@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import styles from '../../styles/Studant.module.css';
 import firebase from '../../Repositories/firebase';
 import Nav from '../../Layouts/nav';
+import { parseCookies } from '../../Services/parseCookies'
 
 
 export default function Studant(props){
@@ -26,16 +26,15 @@ export default function Studant(props){
 
 
 Studant.getInitialProps = async (ctx) => {
-
-    try {
-      const authToken = ctx.req.cookies.authToken
+  try {
+    const {authToken} = parseCookies(ctx.req)
 
       if( !authToken )
         throw new Error('Can not find user')
       
       const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
       const user = credentialUser.user.email
-      
+
       return {
         props: {
           user_email: user

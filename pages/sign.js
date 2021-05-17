@@ -2,6 +2,7 @@ import { Form, Button } from 'react-bootstrap'
 import styles from '../styles/Sign.module.css'
 import Nav from '../Layouts/nav'
 
+
 export default function Sign(){
     return (
         <div className={styles.container}>
