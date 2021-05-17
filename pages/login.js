@@ -4,23 +4,26 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Nav from '../Layouts/nav'
 import {handleLogin} from '../Services/handlelogin'
+import { useCookies } from "react-cookie"
 import styles from '../styles/Login.module.css'
+import { parseCookies } from '../Services/parseCookies'
 
 export default function Login(props){
 
-  const {setCookie, setUsername, username} = useAuth()
+  const { setUsername, username} = useAuth()
+  const [cookie, setCookie] = useCookies(["authToken"])
   const router = useRouter()
-  let user_email = ''
-  
-  if( props.props.user_email )
-    user_email = props.props.user_email
+
 
   const handleButtonLogin = async (e) => {
     e.preventDefault()
 
     const res = await handleLogin('teste@teste.com', '123456')
 
-    setCookie("authToken", res)
+    setCookie("authToken", res, {
+      maxAge: 1800,
+      sameSite: true,
+    })
     setUsername('teste@teste.com')
     router.push('/')
   }
@@ -28,7 +31,7 @@ export default function Login(props){
     return (
         <div>
   
-        <Nav user={user_email}/>
+        <Nav/>
   
         <main className={styles.main}>
             <h2>Login</h2>
@@ -51,30 +54,4 @@ export default function Login(props){
   
       </div>
     );
-}
-
-
-Login.getInitialProps = async (ctx) => {
-
-  try {
-    const authToken = ctx.req.cookies.authToken
-
-    if( !authToken )
-      throw new Error('Can not find user')
-    
-    const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
-    const user = credentialUser.user.email
-    
-    return {
-      props: {
-        user_email: user
-      }
-    }
-  } catch (error) {
-    return {
-      props: {
-        user_email: ''
-      }
-    }
-  }
 }

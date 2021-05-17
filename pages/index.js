@@ -1,8 +1,7 @@
 import styles from '../styles/Home.module.css'
 import firebase from '../Repositories/firebase'
 import Nav from '../Layouts/nav'
-
-import cookie from 'cookie'
+import { parseCookies } from '../Services/parseCookies'
 
 export default function Home(props) {
 
@@ -21,10 +20,11 @@ export default function Home(props) {
   )
 }
 
-Home.getInitialProps = async (ctx) => {
+
+Home.getInitialProps = async ({req}) => {
 
   try {
-    const authToken = ctx.req.cookies.authToken
+    const {authToken} = parseCookies(req)
 
     if( !authToken )
       throw new Error('Can not find user')
