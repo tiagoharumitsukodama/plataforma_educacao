@@ -1,19 +1,17 @@
 import { Nav, Navbar, Container, Button } from 'react-bootstrap'
 import { handleLogout } from '../Services/handlelogout'
 import { useAuth } from '../Hook/useAuth'
-import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/router'
+import cookies from 'next-cookies'
 
 export default function Navegation({user}){
 
     const {setUsername} = useAuth()
-    const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
     const router = useRouter()
 
     const handleButtonLogout = async () => {
         await handleLogout()
-        removeCookie('authToken')
-        setUsername('')
+        document.cookie = `authToken=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT`
         router.push('/login')
     }
 
