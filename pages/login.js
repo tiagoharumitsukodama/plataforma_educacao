@@ -21,7 +21,6 @@ export default function Login(props){
     const res = await handleLogin('teste@teste.com', '123456')
 
     setCookie("authToken", res, {
-      path: "/",
       maxAge: 1800,
       sameSite: true,
     })
