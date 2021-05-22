@@ -1,6 +1,6 @@
 import { useStorage } from "../../Hook/useStorage"
 
-export default function ProgressBar({file, setFile}) {
+export default function Progressbar({file, setFile}) {
     
     const {url, progress} = useStorage(file)
 
