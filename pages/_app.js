@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/globals.css';
 import Head from "next/head";
-import { AuthProvider } from './Contexts/AuthContext';
+import { AuthProvider } from "../Contexts/AuthContext"
 import { CookiesProvider } from 'react-cookie';
 
 
