@@ -20,6 +20,7 @@ export default function GetAllKanjiList({setSelectedListName}){
             docs.map(doc => {
                 return (
                     <button 
+                        key={doc.kanjiList}
                         type="button"
                         className="list-group-item list-group-item-action"
                         onClick={() => setSelectedListName(doc.kanjiList)}

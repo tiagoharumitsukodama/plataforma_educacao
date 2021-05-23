@@ -19,7 +19,7 @@ export default function CreateList(props) {
     console.log(`sem dados`)
   
     const user_email = props.props.user_email
-    const inputNomeLista = useRef()
+    const inputNameList = useRef()
     const username = user_email
     const [err, setErr] = useState('');
     const [selectedListName, setSelectedListName] = useState()
@@ -28,23 +28,25 @@ export default function CreateList(props) {
     // ToDo: buscar listas disponíveis
     // ToDo: salvar listas vendo se já existe
 
+    const handleSelectedList = async () => {
+        setSelectedListName(inputNomeLista.current.value)
+    }
      
     const tryAddList = async (doc) => {
 
         setErr('')
         try {
-            const inputNameList = inputNomeLista.current.value
 
-            if( !inputNameList )
+            if( !selectedListName )
                 throw Error('Dê um nome a lista')
 
             await useCreateNewList({
-                    nameList:inputNameList, 
+                    nameList:selectedListName, 
                     newElement:doc,
                     username
                 })
             
-            useSaveNewListName({kanjiList: inputNameList, username})
+            useSaveNewListName({kanjiList: selectedListName, username})
 
         } catch (error) {
 
@@ -65,7 +67,8 @@ export default function CreateList(props) {
                         <GetAllKanjiList setSelectedListName={setSelectedListName} />
                         <input 
                             type='text' 
-                            ref={inputNomeLista} 
+                            ref={inputNameList}
+                            onSelect={handleSelectedList} 
                             className='list-group-item list-group-item-action mb-2' 
                             placeholder='Uma nova lista' />
                         {
