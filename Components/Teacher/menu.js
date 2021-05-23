@@ -9,9 +9,9 @@ export default function Menu(){
             message: "Adicione kanjis para os alunos jogarem"
         },
         {
-            title: "Jogos de katakana",
-            uri: "/sign",
-            message: "Adicione kanjis para os alunos jogarem"
+            title: "Criar lista de Kanjis",
+            uri: "/teacher/create_kanji_list",
+            message: "Crie lista de kanjis para os alunos jogarem"
         },
         {
             title: "Jogos de katakana",
