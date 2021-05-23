@@ -1,4 +1,4 @@
-import useFirestone from "../../Hook/useFirestone"
+import {useFirestone} from "../../Hook/useFirestone"
 import Image from 'next/image'
 
 
