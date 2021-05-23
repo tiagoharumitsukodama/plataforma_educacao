@@ -7,6 +7,7 @@ import firebase from "../../Repositories/firebase"
 import styles from '../../styles/Teacher.module.css'
 import Nav from '../../Layouts/nav'
 import KanjiList from '../../Components/Feed/kanjiList';
+import GetAllKanjiList from '../../Components/Feed/getAllKanjiList';
 
 
 export default function CreateList(props) {
@@ -18,13 +19,14 @@ export default function CreateList(props) {
     console.log(`sem dados`)
   
     const user_email = props.props.user_email
-
     const inputNomeLista = useRef()
     const username = user_email
     const [err, setErr] = useState('');
     const [selectedListName, setSelectedListName] = useState()
     const [collectionName, setCollectionName] = useState('images')
-    // ToDo: baixar listas de collection
+    // ToDo: filtrar e setCollectionName
+    // ToDo: buscar listas disponíveis
+    // ToDo: salvar listas vendo se já existe
 
      
     const tryAddList = async (doc) => {
@@ -60,13 +62,12 @@ export default function CreateList(props) {
                 <div className='d-flex justify-content-around'>
                     <div className='list-group col-2'>
                         <p className="h3">Listas</p>
-                        <button type="button" className="list-group-item list-group-item-action" 
-                            onClick={() => setSelectedListName("lista1")}
-                        >Lista 1</button>
-                        <button type="button" className="list-group-item list-group-item-action">Lista 2</button>
-                        <button type="button" className="list-group-item list-group-item-action">Lista 3</button>
-                        <input type='text' ref={inputNomeLista} className='list-group-item list-group-item-action mb-2' 
-                            placeholder='nome da lista' />
+                        <GetAllKanjiList setSelectedListName={setSelectedListName} />
+                        <input 
+                            type='text' 
+                            ref={inputNomeLista} 
+                            className='list-group-item list-group-item-action mb-2' 
+                            placeholder='Uma nova lista' />
                         {
                             err &&
                             <div className="alert alert-danger" role="alert">{err}</div>

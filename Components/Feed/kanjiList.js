@@ -11,8 +11,6 @@ export default function KanjiList({listName}){
 
     const {docs} = useFirestone(listName)
 
-    console.log(docs)
-
     return (
         <div className='list-group list-group-flush mt-2 mb-2'>
         <p className="h5 mt-2">Adicionados</p>
