@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react'
 import { projectFirestore } from "../Repositories/firebase"
 
-
-export default function useFirestone(collection) {
-    
+export function useFirestone(collection) {
+console.log(collection)    
     const [docs, setDocs] = useState([])
 
     useEffect( () => {
         const unsub = projectFirestore.collection(collection)
-            .orderBy('createdAt', 'desc')
             .onSnapshot((snap) => {
                 let documents = []
                 snap.forEach(doc => {

@@ -2,7 +2,6 @@ import { useRouter } from 'next/router'
 import styles from '../../styles/Teacher.module.css'
 import firebase from '../../Repositories/firebase'
 import Nav from '../../Layouts/nav'
-
 import UploadKanji from "../../Components/Feed/uploadKanji"
 import AlreadyAddKanjis from "../../Components/Feed/alreadyAddKanji"
 import KanjiDatabaseProvider from "../../Contexts/KanjiDatabase"
@@ -46,14 +45,14 @@ export default function Upload_kanji(props){
 Upload_kanji.getInitialProps = async (ctx) => {
 
   try {
-/*    const {authToken} = parseCookies(ctx.req)
+    const {authToken} = parseCookies(ctx.req)
 
     if( !authToken )
       throw new Error('Can not find user')
     
     const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
     const user = credentialUser.user.email
-*/ const user = "tiago"
+
     return {
       props: {
         user_email: user

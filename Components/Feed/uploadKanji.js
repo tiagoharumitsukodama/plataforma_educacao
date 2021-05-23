@@ -63,7 +63,15 @@ export default function UploadKanji() {
                 </div> 
             }
 
-            { meanKanji && groupKanji && file && <ProgressBar file={file} setFile={setFile}/> }
+            { 
+                meanKanji 
+                    && groupKanji 
+                    && file 
+                    && <ProgressBar 
+                        file={file} 
+                        setFile={setFile}
+                    /> 
+            }
         </div>
     );
 }

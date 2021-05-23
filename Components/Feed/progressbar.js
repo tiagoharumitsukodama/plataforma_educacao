@@ -1,13 +1,18 @@
 import { useStorage } from "../../Hook/useStorage"
 import { useEffect } from "react"
+import { useKanjiDatabase } from "../../Hook/useKanjiDatabase"
 
 export default function Progressbar({file, setFile}) {
     
-    const {url, progress, error} = useStorage(file)
+    const { meanKanji,setMeanKanji } = useKanjiDatabase()
+    const { groupKanji, setGroupKanji } = useKanjiDatabase()
+    const {url, progress, error} = useStorage(file, meanKanji, groupKanji)
 
     useEffect( () => {
         if(url) {
             setFile(null)
+            setGroupKanji(null)
+            setMeanKanji(null)
         }
     },[url, setFile]) 
         
