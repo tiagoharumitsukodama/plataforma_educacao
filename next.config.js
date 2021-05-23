@@ -3,7 +3,8 @@ images: {
   domains: ['firebasestorage.googleapis.com'],
 },
 env: {
-    customKey:process.env.TESTE,
+
+    VERCEL_URL: process.env.VERCEL_URL,
 
     firebaseAdminKey: {
     type:process.env.type,

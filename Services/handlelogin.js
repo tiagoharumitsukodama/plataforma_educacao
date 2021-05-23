@@ -6,7 +6,10 @@ export const handleLogin = async (email, password) => {
         const user = await firebase.auth().signInWithEmailAndPassword(email, password)
         const user_uid = await user.user.uid
 
-        const res = await fetch('http://localhost:3000/api/auth', {
+        const url = process.env.VERCEL_URL + "/api/auth"
+
+
+        const res = await fetch(url, {
             method: 'POST',
             mode: 'cors',
             body: JSON.stringify({ uid: `${user_uid}` }),
