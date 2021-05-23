@@ -4,16 +4,19 @@ export default function Menu(){
 
     const menu_list = [
         {
-            title: "Jogos de kanji",
-            uri: "/login"
+            title: "Adicionar Kanji",
+            uri: "/teacher/upload_kanji",
+            message: "Adicione kanjis para os alunos jogarem"
         },
         {
             title: "Jogos de katakana",
-            uri: "/sign"
+            uri: "/sign",
+            message: "Adicione kanjis para os alunos jogarem"
         },
         {
             title: "Jogos de katakana",
-            uri: "/sign"
+            uri: "/sign",
+            message: "Adicione kanjis para os alunos jogarem"
         }
     ]
 
@@ -37,12 +40,12 @@ export default function Menu(){
                                 }}>
                         <Card.Body>
                             <Card.Title>{card.title}</Card.Title>
-                            <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
                             <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
+                                {
+                                    card.message
+                                }
                             </Card.Text>
-                            <Card.Link href="#">{card.uri}</Card.Link>
+                            <Card.Link href={card.uri}>Clique</Card.Link>
                         </Card.Body>
                         </Card>
                     );

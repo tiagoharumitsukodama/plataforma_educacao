@@ -1,4 +1,7 @@
 module.exports = {
+images: {
+  domains: ['firebasestorage.googleapis.com'],
+},
 env: {
     customKey:process.env.TESTE,
 

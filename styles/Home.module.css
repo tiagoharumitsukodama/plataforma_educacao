@@ -1,11 +1,11 @@
 .container {
-    background-color: aquamarine;
+    background-color: rgb(238, 247, 223);
     height: 100vh;
     width: 100vw;
 }
 
 .main {
-    background-color: blue;
+    background-color: rgb(195, 209, 192);
     margin: 20px 40px
 }
 
