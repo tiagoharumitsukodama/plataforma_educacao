@@ -19,7 +19,7 @@ export default function Login(props){
     e.preventDefault()
 
     const res = await handleLogin('teste@teste.com', '123456')
-
+console.log("res", res)
     setCookie("authToken", res, {
       maxAge: 1800,
       sameSite: true,
