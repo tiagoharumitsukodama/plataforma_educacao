@@ -24,7 +24,7 @@ export const handleLogin = async (email, password) => {
         return (token.authToken)
         
     } catch (error) {
-        console.log('usuario nao encontrado')
+        console.log('usuario nao encontrado', error.message)
         return ''
     }
 }
