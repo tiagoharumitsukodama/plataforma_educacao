@@ -13,10 +13,10 @@ export default function GetKanjiList({tryAddList, nameCollection}) {
             <table className="table">
             <thead>
             <tr>
-                <th scope="col">Imagem</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Adicionar</th>
+                <th scope="col">Kanji</th>
+                <th scope="col">Significado</th>
+                <th scope="col">grupo</th>
             </tr>
             </thead>
             <tbody>

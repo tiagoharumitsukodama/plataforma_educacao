@@ -1,6 +1,5 @@
 import { useState, useRef } from 'react';
 import { useCreateNewList } from "../../Hook/useCreateKanjiList"
-import { useAuth } from "../../Hook/useAuth"
 import GetKanjiList from "../../Components/Feed/getKanjiList"
 import { useRouter } from 'next/router'
 import { parseCookies } from '../../Services/parseCookies'
@@ -19,18 +18,17 @@ export default function CreateList(props) {
   
     const user_email = props.props.user_email
 
-    const [url, setUrl] = useState('')
-    const [show, setShow] = useState('none')
+    const [showAddKanji, setShowAddKanji] = useState('none')
     const inputNomeLista = useRef()
-    const { username } = useAuth()
     const [err, setErr] = useState('');
-    const [newKanjiList, setNewKanjiList] = useState(['um', 'dois'])
-    
+    const username = user_email
+    const [newKanjiList, setNewKanjiList] = useState(['um', 'dois', 'tres'])
+    // ToDo: baixar listas de collection
+
     
     const tryAddList = async (doc) => {
 
         setErr('')
-
         try {
             const inputNameList = inputNomeLista.current.value
 
@@ -42,6 +40,8 @@ export default function CreateList(props) {
                     newElement:doc,
                     username
                 })
+            
+            setNewKanjiList(newKanjiList => [...newKanjiList, doc.meanKanji])
 
         } catch (error) {
 
@@ -62,14 +62,14 @@ export default function CreateList(props) {
                         <button type="button" className="list-group-item list-group-item-action" >Lista 1</button>
                         <button type="button" className="list-group-item list-group-item-action">Lista 2</button>
                         <button type="button" className="list-group-item list-group-item-action">Lista 3</button>
-                        <button  className='btn btn-dark mt-5 mb-3' onClick={() => setShow('block')}>Criar lista</button>
+                        <button  className='btn btn-dark mt-5 mb-3' onClick={() => setShowAddKanji('block')}>Criar lista</button>
                         <input type='text' ref={inputNomeLista} className='list-group-item list-group-item-action mb-2' 
                             placeholder='nome da lista' />
                         {
                             err &&
                             <div className="alert alert-danger" role="alert">{err}</div>
                         }
-                        <div className='list-group list-group-flush mt-2 mb-2' style={{display:show}}>
+                        <div className='list-group list-group-flush mt-2 mb-2' style={{display:showAddKanji}}>
                         <p className="h5 mt-2">Adicionados</p>
                         {
                             newKanjiList.map( el => (
