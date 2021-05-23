@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useCreateNewList } from "../../Hook/useCreateKanjiList"
 import GetKanjiList from "../../Components/Feed/getKanjiList"
 import { useRouter } from 'next/router'
@@ -20,9 +20,10 @@ export default function CreateList(props) {
 
     const [showAddKanji, setShowAddKanji] = useState('none')
     const inputNomeLista = useRef()
-    const [err, setErr] = useState('');
     const username = user_email
+    const [err, setErr] = useState('');
     const [newKanjiList, setNewKanjiList] = useState(['um', 'dois', 'tres'])
+    const [collectionName, setCollectionName] = useState('images')
     // ToDo: baixar listas de collection
 
     
@@ -83,7 +84,7 @@ export default function CreateList(props) {
                         </div>
                     </div>
                     <div className='col-5'>
-                        <GetKanjiList tryAddList={tryAddList} nameCollection='images'/>
+                        <GetKanjiList tryAddList={tryAddList} nameCollection={collectionName}/>
                     </div>
                 </div>
             </div>
