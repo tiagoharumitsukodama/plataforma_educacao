@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import ProgressBar from "./progressbar"
-import {useKanjiDatabase} from "../../Hook/useKanjiDatabase"
+import { useKanjiDatabase } from "../../Hook/useKanjiDatabase"
 
 export default function UploadKanji() {
 

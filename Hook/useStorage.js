@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import { projectFirestore, projectStorage } from '../Repositories/firebase'
 
-export default function useStorage( file, meanKanji, groupKanji ) {
+export function useStorage( file, meanKanji="siginificado1", groupKanji="gruposignificado1" ) {
 
     const [url, setUrl] = useState(null)
     const [progress, setProgress] = useState(0)
+    let error = ""
 
     useEffect( () => {
         const storageRef = projectStorage.ref(file.name)

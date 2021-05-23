@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import { KanjiDatabase } from "../Contexts/KanjiDatabase"
+import { KanjiDatabaseContext } from "../Contexts/KanjiDatabase"
 
-export function useFeedKanjiDatabase(){
+export function useKanjiDatabase(){
 
-    return useContext( KanjiDatabase );
+    return useContext( KanjiDatabaseContext );
 }

@@ -1,8 +1,9 @@
 import { useStorage } from "../../Hook/useStorage"
+import { useEffect } from "react"
 
 export default function Progressbar({file, setFile}) {
     
-    const {url, progress} = useStorage(file)
+    const {url, progress, error} = useStorage(file)
 
     useEffect( () => {
         if(url) {
