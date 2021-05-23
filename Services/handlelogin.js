@@ -5,11 +5,7 @@ export const handleLogin = async (email, password) => {
     try {
         const user = await firebase.auth().signInWithEmailAndPassword(email, password)
         const user_uid = await user.user.uid
-
         const url = process.env.VERCEL_URL + "/api/auth"
-
-        console.log("url", url)
-        console.log("user_uid", user_uid)
 
         const res = await fetch( url, {
             method: 'POST',
