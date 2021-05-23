@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { projectFirestore } from "../Repositories/firebase"
 
 export function useFirestone(collection) {
-console.log(collection)    
+
     const [docs, setDocs] = useState([])
 
     useEffect( () => {

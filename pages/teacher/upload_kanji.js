@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router'
 import styles from '../../styles/Teacher.module.css'
 import firebase from '../../Repositories/firebase'
+import { parseCookies } from '../../Services/parseCookies'
+
 import Nav from '../../Layouts/nav'
 import UploadKanji from "../../Components/Feed/uploadKanji"
 import AlreadyAddKanjis from "../../Components/Feed/alreadyAddKanji"
