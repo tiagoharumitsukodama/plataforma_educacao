@@ -8,8 +8,10 @@ export const handleLogin = async (email, password) => {
 
         const url = process.env.VERCEL_URL + "/api/auth"
 
+        console.log("url", url)
+        console.log("user_uid", user_uid)
 
-        const res = await fetch(url, {
+        const res = await fetch( url, {
             method: 'POST',
             mode: 'cors',
             body: JSON.stringify({ uid: `${user_uid}` }),
