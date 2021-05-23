@@ -6,7 +6,8 @@ export const handleLogin = async (email, password) => {
         const user = await firebase.auth().signInWithEmailAndPassword(email, password)
         const user_uid = await user.user.uid
 
-        const url = process.env.VERCEL_URL + "/api/auth"
+        //const url = process.env.VERCEL_URL + "/api/auth"
+        const url = "https://himawari.vercel.app/api/auth"
 
         console.log("url", url)
         console.log("user_uid", user_uid)
