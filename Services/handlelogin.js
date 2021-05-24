@@ -19,7 +19,7 @@ export const handleLogin = async (email, password) => {
 
         const token = await res.json()
 
-        return (token.authToken)
+        return ({token:token.authToken, uid: user_uid})
         
     } catch (error) {
         console.log('usuario nao encontrado', error.message)

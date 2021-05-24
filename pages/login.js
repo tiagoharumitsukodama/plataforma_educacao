@@ -1,4 +1,3 @@
-import { useAuth } from '../Hook/useAuth'
 import { Form, Button } from 'react-bootstrap'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -8,9 +7,8 @@ import { useCookies } from "react-cookie"
 import styles from '../styles/Login.module.css'
 import { useRef } from 'react'
 
-export default function Login(props){
+export default function Login(){
 
-  const { setUsername, username } = useAuth()
   const [cookie, setCookie] = useCookies(["authToken"])
   const router = useRouter()
   const inputEmail = useRef()
@@ -22,15 +20,14 @@ export default function Login(props){
 
     const email = inputEmail.current.value
     const password = inputPassword.current.value
-    const res = await handleLogin(email, password)
+    const {token,uid} = await handleLogin(email, password)
 
-    setCookie("authToken", res, {
+    setCookie("authToken", token, {
       maxAge: 1800,
       sameSite: true,
     })
 
-    setUsername(email)
-    router.push('/')
+    router.push('/studant/'+uid)
   }
 
     return (
@@ -47,7 +44,6 @@ export default function Login(props){
                   ref={inputEmail}
                   />
             </Form.Group>
-
             <Form.Group controlId="formBasicPassword">
                 <Form.Label>Senha</Form.Label>
                 <Form.Control 
