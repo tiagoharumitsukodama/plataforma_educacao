@@ -4,7 +4,7 @@ images: {
 },
 env: {
 
-    VERCEL_URL: process.env.VERCEL_URL,
+    MY_URL: process.env.MY_URL,
 
     firebaseAdminKey: {
     type:process.env.type,
