@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import styles from '../../styles/Teacher.module.css'
 import firebase from '../../Repositories/firebase'
 import Nav from '../../Layouts/nav'
@@ -7,9 +6,6 @@ import { Card } from 'react-bootstrap'
 import { parseCookies } from '../../Services/parseCookies'
 
 export default function Teacher(props){
-
-    const router = useRouter()
-    const id = router.query.id || []
 
    if( !props.props.user_name )
     console.log(`sem dados`)
@@ -23,7 +19,7 @@ export default function Teacher(props){
     
           <main className={styles.main}>
             <Card className="col-10 text-center">
-              <Card.Body>Seja bem vindo, {id}</Card.Body>
+              <Card.Body>Seja bem vindo</Card.Body>
             </Card>
             <Menu />
           </main>
