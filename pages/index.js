@@ -7,12 +7,12 @@ import { Card, Button } from "react-bootstrap"
 
 export default function Home(props) {
 
-  const user_email = props.props.user_email
+  const user_name = props.props.user_name
 
   return (
     <div className={styles.container}>
 
-      <Nav user={user_email}/>
+      <Nav user={user_name}/>
 
       <main className={styles.main}>
           <p>Testando 123</p>
@@ -44,18 +44,18 @@ Home.getInitialProps = async ({req}) => {
       throw new Error('Can not find user')
     
     const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
-    const user = credentialUser.user.email
+    const user = credentialUser.user.displayName
 
     return {
       props: {
-        user_email: user
+        user_name: user
       }
     }
 
   } catch (error) {
     return {
       props: {
-        user_email: ''
+        user_name: ''
       }
     }
   }

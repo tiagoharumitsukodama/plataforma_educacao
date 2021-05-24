@@ -15,12 +15,12 @@ export default function CreateList(props) {
     const router = useRouter()
     const id = router.query.id || []
   
-   if( !props.props.user_email )
+   if( !props.props.user_name )
     console.log(`sem dados`)
   
-    const user_email = props.props.user_email
+    const user_name = props.props.user_name
+    const username = user_name
     const inputNameList = useRef()
-    const username = user_email
     const [err, setErr] = useState('');
     const [selectedListName, setSelectedListName] = useState()
     const [collectionName, setCollectionName] = useState('allKanjis')
@@ -55,7 +55,7 @@ export default function CreateList(props) {
     return (
         <div className={styles.container}>
 
-            <Nav user={user_email}/>
+            <Nav user={user_name}/>
 
             <div className='col-12'>
                 <p className="h2 text-center mt-3 mb-5">Criar lista de Kanji</p>
@@ -99,11 +99,11 @@ CreateList.getInitialProps = async (ctx) => {
         throw new Error('Can not find user')
       
       const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
-      const user = credentialUser.user.email
+      const user = credentialUser.user.displayName
         
       return {
         props: {
-          user_email: user
+            user_name: user
         }
       }
     } catch (error) {

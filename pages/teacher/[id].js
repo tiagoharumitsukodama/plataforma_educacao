@@ -11,15 +11,15 @@ export default function Teacher(props){
     const router = useRouter()
     const id = router.query.id || []
 
-   if( !props.props.user_email )
+   if( !props.props.user_name )
     console.log(`sem dados`)
 
-  const user_email = props.props.user_email
+  const user_name = props.props.user_name
 
     return (
         <div className={styles.container}>
     
-          <Nav user={user_email}/>
+          <Nav user={user_name}/>
     
           <main className={styles.main}>
             <Card className="col-10 text-center">
@@ -41,11 +41,11 @@ Teacher.getInitialProps = async (ctx) => {
         throw new Error('Can not find user')
       
       const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
-      const user = credentialUser.user.email
+      const user = credentialUser.user.displayName
 
       return {
         props: {
-          user_email: user
+          user_name: user
         }
       }
     } catch (error) {

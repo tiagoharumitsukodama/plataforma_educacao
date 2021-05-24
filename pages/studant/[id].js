@@ -9,12 +9,12 @@ export default function Studant(props){
 
   const router = useRouter()
   const id = router.query.id || []
-  const user_email = props.props.user_email
+  const user_name = props.props.user_name
 
     return (
         <div className={styles.container}>
             
-          <Nav user={user_email}/>
+          <Nav user={user_name}/>
     
           <main className={styles.main}>
             Oi aluno { id }
@@ -33,13 +33,11 @@ Studant.getInitialProps = async (ctx) => {
         throw new Error('Can not find user')
       
       const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
-      const user = credentialUser.user.email
-
-      console.log(credentialUser.user)
+      const user = credentialUser.user.displayName
 
       return {
         props: {
-          user_email: user
+          user_name: user
         }
       }
       
