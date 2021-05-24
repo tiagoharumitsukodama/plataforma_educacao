@@ -6,6 +6,7 @@ import {handleLogin} from '../Services/handlelogin'
 import { useCookies } from "react-cookie"
 import styles from '../styles/Login.module.css'
 import { useRef } from 'react'
+import { useAuth } from '../Hook/useAuth'
 
 export default function Login(){
 
@@ -27,7 +28,7 @@ export default function Login(){
       sameSite: true,
     })
 
-    router.push('/studant/'+uid)
+    router.push('/studant')
   }
 
     return (

@@ -1,12 +1,10 @@
 import { Nav, Navbar, Container, Button } from 'react-bootstrap'
 import { handleLogout } from '../Services/handlelogout'
-import { useAuth } from '../Hook/useAuth'
 import { useRouter } from 'next/router'
 import cookies from 'next-cookies'
 
 export default function Navegation({user}){
 
-    const {setUsername} = useAuth()
     const router = useRouter()
 
     const handleButtonLogout = async () => {
@@ -29,8 +27,8 @@ export default function Navegation({user}){
             <Nav className="mr-auto d-flex justify-content-center align-items-center">
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="#">Sobre</Nav.Link>
-                <Nav.Link href="/studant/55">Aluno</Nav.Link>
-                <Nav.Link href="/teacher/55">Professor</Nav.Link>                
+                <Nav.Link href={"/studant"} >Aluno</Nav.Link>
+                <Nav.Link href={"/teacher"}>Professor</Nav.Link>                
                 <Nav.Link href="#">Contato</Nav.Link>
                 <Nav.Link href="/login">Login</Nav.Link>
                 </Nav>
