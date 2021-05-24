@@ -17,13 +17,18 @@ export default function CreateList(props) {
     const user_name = props.props.user_name
     const username = user_name
     const inputNameList = useRef()
+    const inputSearch = useRef()
     const [err, setErr] = useState('');
     const [selectedListName, setSelectedListName] = useState()
     const [collectionName, setCollectionName] = useState('allKanjis')
-    // ToDo: filtrar e setCollectionName
 
+    
     const handleSelectedList = async () => {
         setSelectedListName(inputNameList.current.value)
+    }
+
+    const handleSearch = async () => {
+        setCollectionName(inputSearch.current.value)
     }
      
     const tryAddList = async (doc) => {
@@ -77,6 +82,13 @@ export default function CreateList(props) {
 
                     </div>
                     <div className='col-5'>
+                        <input 
+                                type='text' 
+                                ref={inputSearch}
+                                onChange={handleSearch}
+                                className='list-group-item list-group-item-action mb-2' 
+                                placeholder='Quero a lista:' 
+                        />
                         <GetKanjiList tryAddList={tryAddList} nameCollection={collectionName}/>
                     </div>
                 </div>
