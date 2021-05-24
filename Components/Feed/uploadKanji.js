@@ -20,6 +20,8 @@ export default function UploadKanji() {
         if( selected && types.includes(selected.type) ) {
             setFile(selected)
             setError('')
+            inputMeanKanji.current.value = ""
+            inputGroupKanji.current.value = ""
         }
         else {
             setFile(null)
