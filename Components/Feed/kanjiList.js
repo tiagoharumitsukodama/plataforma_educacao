@@ -5,7 +5,7 @@ export default function KanjiList({listName}){
     if(!listName)
         return (
             <div className='list-group list-group-flush mt-2 mb-2'>
-            <p className="h5 mt-2">Nenhuma lista selecionada</p>
+            <p className="h5 mt-2">Escolha um nome e selecione um kanji</p>
             </div>
         );
 

@@ -29,7 +29,7 @@ export default function CreateList(props) {
     // ToDo: salvar listas vendo se já existe
 
     const handleSelectedList = async () => {
-        setSelectedListName(inputNomeLista.current.value)
+        setSelectedListName(inputNameList.current.value)
     }
      
     const tryAddList = async (doc) => {
@@ -41,12 +41,12 @@ export default function CreateList(props) {
                 throw Error('Dê um nome a lista')
 
             await useCreateNewList({
-                    nameList:selectedListName, 
-                    newElement:doc,
-                    username
-                })
+                nameList:selectedListName, 
+                newElement:doc,
+                username
+            })
             
-            useSaveNewListName({kanjiList: selectedListName, username})
+            inputNameList.current.value = ""
 
         } catch (error) {
 
@@ -64,13 +64,16 @@ export default function CreateList(props) {
                 <div className='d-flex justify-content-around'>
                     <div className='list-group col-2'>
                         <p className="h3">Listas</p>
-                        <GetAllKanjiList setSelectedListName={setSelectedListName} />
+                        <GetAllKanjiList 
+                            setSelectedListName={setSelectedListName} 
+                            selectedListName={selectedListName}
+                            />
                         <input 
                             type='text' 
                             ref={inputNameList}
                             onSelect={handleSelectedList} 
                             className='list-group-item list-group-item-action mb-2' 
-                            placeholder='Uma nova lista' />
+                            placeholder='Nome da nova lista' />
                         {
                             err &&
                             <div className="alert alert-danger" role="alert">{err}</div>

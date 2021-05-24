@@ -9,11 +9,18 @@ export function useCreateNewList( {nameList, newElement, username} ) {
     //references
     const collectionRef = projectFirestore.collection(nameList)
     collectionRef.add(elements)
-}
 
-export function useSaveNewListName( element ) { 
+    projectFirestore.collection("listKanjiList")
+        .where("kanjiList", "==", nameList)
+        .get()
+        .then((querySnapshot) => {
 
-    //references
-    const collectionRef = projectFirestore.collection("listKanjiList")
-    collectionRef.add(element)
+            if(querySnapshot.empty){
+                const ref = projectFirestore.collection("listKanjiList")
+                ref.add({kanjiList: nameList, username: username})
+            }
+        })
+        .catch((error) => {
+            console.log("Error getting documents: ", error);
+        });
 }

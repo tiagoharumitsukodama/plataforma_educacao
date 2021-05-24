@@ -1,6 +1,7 @@
+import { useEffect, useState } from "react";
 import { useFirestone } from "../../Hook/useFirestone"
 
-export default function GetAllKanjiList({setSelectedListName}){
+export default function GetAllKanjiList({setSelectedListName,selectedListName}){
 
     // add com outro nome e trocar aqui tbm
     // allKanjiList
