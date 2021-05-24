@@ -3,16 +3,14 @@ import { useFirestone } from "../../Hook/useFirestone"
 
 export default function GetAllKanjiList({setSelectedListName,selectedListName}){
 
-    // add com outro nome e trocar aqui tbm
-    // allKanjiList
-    const {docs} = useFirestone("listKanjiList")
+    const {docs} = useFirestone("allKanjiList")
 
     return (
         <>
         <button 
             type="button" 
             className="list-group-item list-group-item-action" 
-            onClick={() => setSelectedListName("images")}
+            onClick={() => setSelectedListName("allKanjis")}
         >
             Todos
         </button>

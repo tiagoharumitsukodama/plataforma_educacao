@@ -5,7 +5,7 @@ import Image from 'next/image'
 export default function GetKanjiList({tryAddList, nameCollection}) {
 
     if( !nameCollection )
-        nameCollection='images'
+        nameCollection='allKanjis'
 
     const { docs } = useFirestone(nameCollection)
 

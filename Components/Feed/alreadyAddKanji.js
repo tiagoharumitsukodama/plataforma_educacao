@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function AlreadyAddKanjis() {
 
-    const { docs } = useFirestone('images')
+    const { docs } = useFirestone('allKanjis')
 
     return (
             <table className="table">

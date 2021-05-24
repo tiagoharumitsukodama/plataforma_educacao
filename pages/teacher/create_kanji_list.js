@@ -23,10 +23,8 @@ export default function CreateList(props) {
     const username = user_email
     const [err, setErr] = useState('');
     const [selectedListName, setSelectedListName] = useState()
-    const [collectionName, setCollectionName] = useState('images')
+    const [collectionName, setCollectionName] = useState('allKanjis')
     // ToDo: filtrar e setCollectionName
-    // ToDo: buscar listas disponíveis
-    // ToDo: salvar listas vendo se já existe
 
     const handleSelectedList = async () => {
         setSelectedListName(inputNameList.current.value)

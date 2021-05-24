@@ -10,13 +10,13 @@ export function useCreateNewList( {nameList, newElement, username} ) {
     const collectionRef = projectFirestore.collection(nameList)
     collectionRef.add(elements)
 
-    projectFirestore.collection("listKanjiList")
+    projectFirestore.collection("allKanjiList")
         .where("kanjiList", "==", nameList)
         .get()
         .then((querySnapshot) => {
 
             if(querySnapshot.empty){
-                const ref = projectFirestore.collection("listKanjiList")
+                const ref = projectFirestore.collection("allKanjiList")
                 ref.add({kanjiList: nameList, username: username})
             }
         })
