@@ -11,6 +11,7 @@ export default function Sign(){
     const inputEmail = useRef()
     const inputPassword = useRef()
     const inputConfirmPassword = useRef()
+    const inputName = useRef()
     const router = useRouter()
 
     const handleButtonSign = async (e) => {
@@ -22,12 +23,12 @@ export default function Sign(){
             return
         }
 
-        const user = handleSign( inputEmail.current.value, inputPassword.current.value )
-        if( user )
-            router.push("/login")
-        else
-            alert("Não foi possível criar um usuário")
+        const userCredential = await handleSign( inputEmail.current.value, inputPassword.current.value )
+        userCredential.updateProfile({
+            displayName: inputName.current.value,
+        })
 
+        router.push("/login")
     }
 
     return (
@@ -38,6 +39,10 @@ export default function Sign(){
         <main className={styles.main}>
             <h2>Cadastrar usuário</h2>
             <Form className={styles.form}>
+            <Form.Group controlId="formBasicName">
+                <Form.Label>Nome</Form.Label>
+                <Form.Control type="text" placeholder="Nome" ref={inputName}/>
+            </Form.Group>
             <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" placeholder="exemplo@exemplo.com.br" ref={inputEmail}/>
@@ -57,9 +62,6 @@ export default function Sign(){
             </Button>
             </Form>
         </main>
-  
       </div>
-
-
     );
 }

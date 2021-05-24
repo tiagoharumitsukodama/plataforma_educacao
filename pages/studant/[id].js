@@ -35,6 +35,8 @@ Studant.getInitialProps = async (ctx) => {
       const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
       const user = credentialUser.user.email
 
+      console.log(credentialUser.user)
+
       return {
         props: {
           user_email: user

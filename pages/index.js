@@ -45,7 +45,7 @@ Home.getInitialProps = async ({req}) => {
     
     const credentialUser = await firebase.auth().signInWithCustomToken(authToken)
     const user = credentialUser.user.email
-    
+
     return {
       props: {
         user_email: user
