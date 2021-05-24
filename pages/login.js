@@ -28,16 +28,14 @@ export default function Login(props){
       maxAge: 1800,
       sameSite: true,
     })
-    
+
     setUsername(email)
     router.push('/')
   }
 
     return (
         <div>
-  
         <Nav/>
-  
         <main className={styles.main}>
             <h2>Login</h2>
             <Form className={styles.form}>
@@ -64,7 +62,6 @@ export default function Login(props){
             </Form>
             <Link href='/sign' replace>Clique caso queira se cadastrar</Link>
         </main>
-  
       </div>
     );
 }
