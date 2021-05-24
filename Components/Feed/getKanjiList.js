@@ -14,9 +14,9 @@ export default function GetKanjiList({tryAddList, nameCollection}) {
             <thead>
             <tr>
                 <th scope="col">Adicionar</th>
+                <th scope="col">Imagem</th>
                 <th scope="col">Kanji</th>
-                <th scope="col">Significado</th>
-                <th scope="col">grupo</th>
+                <th scope="col">Classificação/Grupo</th>
             </tr>
             </thead>
             <tbody>
@@ -32,8 +32,8 @@ export default function GetKanjiList({tryAddList, nameCollection}) {
                                 height={75}
                             />
                         </td>
-                        <td>{doc.groupKanji}</td>
                         <td>{doc.meanKanji}</td>
+                        <td>{doc.groupKanji}</td>
                     </tr>
                 )) 
             }

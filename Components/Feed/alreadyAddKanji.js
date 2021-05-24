@@ -11,9 +11,8 @@ export default function AlreadyAddKanjis() {
             <thead>
             <tr>
                 <th scope="col">Imagem</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Kaiji</th>
+                <th scope="col">Grupo/Classificação</th>
             </tr>
             </thead>
             <tbody>
@@ -30,9 +29,8 @@ export default function AlreadyAddKanjis() {
                                 height={75}
                             />
                         </td>
-                        <td>{doc.groupKanji}</td>
                         <td>{doc.meanKanji}</td>
-                        <td>{doc.id}</td>
+                        <td>{doc.groupKanji}</td>
                     </tr>
 
                 )) 
