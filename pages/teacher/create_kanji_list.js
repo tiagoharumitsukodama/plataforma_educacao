@@ -1,7 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
-import { useCreateNewList, useSaveNewListName } from "../../Hook/useCreateKanjiList"
+import { useState, useRef } from 'react';
+import { useCreateNewList } from "../../Hook/useCreateKanjiList"
 import GetKanjiList from "../../Components/Feed/getKanjiList"
-import { useRouter } from 'next/router'
 import { parseCookies } from '../../Services/parseCookies'
 import firebase from "../../Repositories/firebase"
 import styles from '../../styles/Teacher.module.css'
@@ -11,9 +10,6 @@ import GetAllKanjiList from '../../Components/Feed/getAllKanjiList';
 
 
 export default function CreateList(props) {
-
-    const router = useRouter()
-    const id = router.query.id || []
   
    if( !props.props.user_name )
     console.log(`sem dados`)

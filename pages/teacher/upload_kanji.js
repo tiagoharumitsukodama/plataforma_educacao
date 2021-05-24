@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import styles from '../../styles/Teacher.module.css'
 import firebase from '../../Repositories/firebase'
 import { parseCookies } from '../../Services/parseCookies'
@@ -8,9 +7,6 @@ import AlreadyAddKanjis from "../../Components/Feed/alreadyAddKanji"
 import KanjiDatabaseProvider from "../../Contexts/KanjiDatabase"
 
 export default function Upload_kanji(props){
-
-  const router = useRouter()
-  const id = router.query.id || []
 
  if( !props.props.user_name )
   console.log(`sem dados`)
