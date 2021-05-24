@@ -6,25 +6,30 @@ import Nav from '../Layouts/nav'
 import {handleLogin} from '../Services/handlelogin'
 import { useCookies } from "react-cookie"
 import styles from '../styles/Login.module.css'
-import { parseCookies } from '../Services/parseCookies'
+import { useRef } from 'react'
 
 export default function Login(props){
 
-  const { setUsername, username} = useAuth()
+  const { setUsername, username } = useAuth()
   const [cookie, setCookie] = useCookies(["authToken"])
   const router = useRouter()
-
+  const inputEmail = useRef()
+  const inputPassword = useRef()
 
   const handleButtonLogin = async (e) => {
+
     e.preventDefault()
 
-    const res = await handleLogin('teste@teste.com', '123456')
+    const email = inputEmail.current.value
+    const password = inputPassword.current.value
+    const res = await handleLogin(email, password)
 
     setCookie("authToken", res, {
       maxAge: 1800,
       sameSite: true,
     })
-    setUsername('teste@teste.com')
+    
+    setUsername(email)
     router.push('/')
   }
 
@@ -38,12 +43,20 @@ export default function Login(props){
             <Form className={styles.form}>
             <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="exemplo@exemplo.com.br" />
+                <Form.Control 
+                  type="email" 
+                  placeholder="exemplo@exemplo.com.br" 
+                  ref={inputEmail}
+                  />
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
                 <Form.Label>Senha</Form.Label>
-                <Form.Control type="password" placeholder="Digite sua senha" />
+                <Form.Control 
+                  type="password" 
+                  placeholder="Digite sua senha" 
+                  ref={inputPassword}
+                  />
             </Form.Group>
             <Button variant="primary" type="submit" onClick={handleButtonLogin}>
                 Pronto
