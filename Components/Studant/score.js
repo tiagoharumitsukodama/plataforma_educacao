@@ -7,19 +7,26 @@ export default function Score({score, setIndex, setScore}){
         setScore(0)
     }
 
+    const styles = { 
+        width: '90vw', 
+        maxWidth: "500px",
+        marginTop: "50px",
+        display: "flex",
+        alignItems: "center"
+    }
+
     return (
-        <Card style={{ width: '90vw', maxWidth: "500px" }}>
+        <Card style={styles}>
             <Card.Body>
-            <Card.Title>Card Title</Card.Title>
+            <Card.Title>Pontuação</Card.Title>
             <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
-            {score}
+            A sua nota foi:  { score }
             </Card.Text>
             <Button 
+                className='btn btn-light col-10'
                 variant="primary"
                 onClick={reset}
-                >Go again</Button>
+                >Reiniciar</Button>
             </Card.Body>
         </Card>
     );
