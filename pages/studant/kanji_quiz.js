@@ -1,15 +1,18 @@
 import styles from '../../styles/Studant.module.css';
 import firebase from '../../Repositories/firebase';
 import Nav from '../../Layouts/nav';
-import Menu from '../../Components/Studant/menu'
 import { parseCookies } from '../../Services/parseCookies'
-import { Card } from 'react-bootstrap'
+import { useFirestone } from "../../Hook/useFirestone"
 
 export default function Studant(props){
 
   const user_name = props.props.user_name
   if( !props.props.user_name )
   console.log(`sem dados`)
+
+  const {docs} = useFirestone("allKanjis")
+
+  console.log(docs)
 
   return (
       <div className={styles.container}>
