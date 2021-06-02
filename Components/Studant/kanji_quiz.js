@@ -1,16 +1,29 @@
 import Image from 'next/image'
+import { useState } from 'react'
 import { Card } from "react-bootstrap"
 
 export default function Kanji_quiz({doc, msg, index, score, setMsg, setIndex, setScore}) {
 
+    const [attemps, setAttemps] = useState(0)
+
     const rightQuestion = () => {
         setIndex(index+1)
         setScore(score+1)
+        setAttemps(0)
     }
 
     const wrongQuestion = () => {
-        setMsg("Quase")
+        if( attemps > 1 ){
+            setIndex(index+1)
+            setAttemps(0)
+        }
+        else {
+            setAttemps(attemps+1)
+            setMsg(`Tentativa ${attemps+1}`)
+        }
+        
     }
+
 
     return (
         <Card style={{ width: '90vw', maxWidth: "500px" }}>
