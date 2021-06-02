@@ -1,7 +1,16 @@
 import Image from 'next/image'
 import { Card } from "react-bootstrap"
 
-export default function Kanji_quiz({doc, msg, index, setMsg, setIndex}) {
+export default function Kanji_quiz({doc, msg, index, score, setMsg, setIndex, setScore}) {
+
+    const rightQuestion = () => {
+        setIndex(index+1)
+        setScore(score+1)
+    }
+
+    const wrongQuestion = () => {
+        setMsg("Quase")
+    }
 
     return (
         <Card style={{ width: '90vw', maxWidth: "500px" }}>
@@ -23,18 +32,18 @@ export default function Kanji_quiz({doc, msg, index, setMsg, setIndex}) {
             <div className="container d-grid gap-3">
             <div className="row gap-3">
                 <div className="col-sm">
-                    <button className='btn btn-light col-10' onClick={() => setIndex(index+1)} >Primeiro</button>
+                    <button className='btn btn-light col-10' onClick={rightQuestion} >Primeiro</button>
                 </div>
                 <div className="col-sm">
-                    <button className='btn btn-light col-10' onClick={() => setMsg('opa')} >Segundo</button>
+                    <button className='btn btn-light col-10' onClick={wrongQuestion} >Segundo</button>
                 </div>
             </div>
             <div className="row gap-3">
                 <div className="col-sm">
-                    <button className='btn btn-light col-10' onClick={() => setMsg('quase')} >Terceiro</button>
+                    <button className='btn btn-light col-10' onClick={wrongQuestion} >Terceiro</button>
                 </div>
                 <div className="col-sm">
-                    <button className='btn btn-light col-10' onClick={() => setMsg('Não consegui baixar')} >Quarto</button>
+                    <button className='btn btn-light col-10' onClick={wrongQuestion} >Quarto</button>
                 </div>
             </div>
         </div>

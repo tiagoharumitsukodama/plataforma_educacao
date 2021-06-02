@@ -4,6 +4,7 @@ import Nav from '../../Layouts/nav';
 import { parseCookies } from '../../Services/parseCookies'
 import { useFirestone } from "../../Hook/useFirestone"
 import Quiz from "../../Components/Studant/kanji_quiz"
+import Score from "../../Components/Studant/score"
 import { useState, useEffect } from "react"
 
 export default function Studant(props){
@@ -16,6 +17,7 @@ export default function Studant(props){
   const [index, setIndex] = useState(0)
   const [msg, setMsg] = useState('')
   const [doc, setDoc] = useState()
+  const [score, setScore] = useState(0)
 
   useEffect(() => {
       setMsg('')
@@ -31,18 +33,24 @@ export default function Studant(props){
         <Nav user={user_name}/>
   
         <main className={styles.main}>
-          Kanji quiz
+          <h2>Kanji quiz</h2>
           {
-              doc ?
+              index < docs.length ?
               <Quiz 
                 doc={doc} 
                 msg={msg}
                 index={index}  
+                score={score}
                 setMsg={setMsg}
                 setIndex={setIndex}
+                setScore={setScore}
               />
-              : 
-            <p>Acaboooou</p>
+            : 
+            <Score 
+              score={score}
+              setIndex={setIndex}
+              setScore={setScore}
+            />
           }
         </main>
       </div>
