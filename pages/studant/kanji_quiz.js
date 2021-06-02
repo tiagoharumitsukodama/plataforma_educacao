@@ -3,6 +3,8 @@ import firebase from '../../Repositories/firebase';
 import Nav from '../../Layouts/nav';
 import { parseCookies } from '../../Services/parseCookies'
 import { useFirestone } from "../../Hook/useFirestone"
+import Quiz from "../../Components/Studant/kanji_quiz"
+import { useState, useEffect } from "react"
 
 export default function Studant(props){
 
@@ -11,9 +13,18 @@ export default function Studant(props){
   console.log(`sem dados`)
 
   const {docs} = useFirestone("allKanjis")
+  const [index, setIndex] = useState(0)
+  const [msg, setMsg] = useState('')
+  const [doc, setDoc] = useState()
 
-  console.log(docs)
+  useEffect(() => {
+      setMsg('')
+      setDoc(docs[index])
 
+      if( index >= docs.length )
+          setMsg('Parabéns')
+
+  },[docs,index])
   return (
       <div className={styles.container}>
   
@@ -21,6 +32,18 @@ export default function Studant(props){
   
         <main className={styles.main}>
           Kanji quiz
+          {
+              doc ?
+              <Quiz 
+                doc={doc} 
+                msg={msg}
+                index={index}  
+                setMsg={setMsg}
+                setIndex={setIndex}
+              />
+              : 
+            <p>Acaboooou</p>
+          }
         </main>
       </div>
   );
