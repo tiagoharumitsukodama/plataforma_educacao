@@ -5,7 +5,7 @@ export default function Menu(){
     const menu_list = [
         {
             title: "Atividade Kanji",
-            uri: "/teacher/upload_kanji",
+            uri: "/studant/kanji_quiz",
             message: "Adicione kanjis para os alunos jogarem"
         },
         {
