@@ -6,6 +6,7 @@ import { useFirestone } from "../../Hook/useFirestone"
 import Quiz from "../../Components/Studant/kanji_quiz"
 import Score from "../../Components/Studant/score"
 import { useState, useEffect } from "react"
+import GetAllKajiList from "../../Components/Feed/getAllKanjiList"
 
 export default function Studant(props){
 
@@ -34,6 +35,7 @@ export default function Studant(props){
   
         <main className={styles.main}>
           <h2>Kanji quiz</h2>
+          <div className={styles.quiz}>
           {
               index < docs.length ?
               <Quiz 
@@ -52,8 +54,17 @@ export default function Studant(props){
               setScore={setScore}
             />
           }
+          </div>
+          
+
+        <div className={styles.aside}>
+          Lista de exercícios
+          <GetAllKajiList />
+        </div>
+
         </main>
-      </div>
+      
+      </div>      
   );
 }
 
