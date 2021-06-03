@@ -28,7 +28,7 @@ export default function Login(){
       sameSite: true,
     })
 
-    router.push('/studant')
+    router.push('/')
   }
 
     return (
