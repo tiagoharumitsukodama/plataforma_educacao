@@ -21,3 +21,11 @@ export function useFirestone(collection) {
 
     return {docs}
 }
+
+export async function useFirestoneRemoveItem(collection, doc){
+    await projectFirestore.collection(collection).doc(doc).delete()
+        .then(() => console.log("Item deletado"))
+        .catch(error => console.log(error.message))
+
+    return "OK"
+}
