@@ -23,9 +23,27 @@ export function useFirestone(collection) {
 }
 
 export async function useFirestoneRemoveItem(collection, doc){
-    await projectFirestore.collection(collection).doc(doc).delete()
+    
+    const ref = await projectFirestore.collection(collection)
+
+    await ref.doc(doc).delete()
         .then(() => console.log("Item deletado"))
         .catch(error => console.log(error.message))
+
+    const size = (await ref.get()).size
+
+    await projectFirestore.collection("allKanjiList")
+        .where("kanjiList", "==", collection)
+        .get()
+        .then((snapQuery) => {
+            snapQuery.forEach((doc) => {
+                projectFirestore.collection("allKanjiList")
+                    .doc(doc.id)
+                    .update({
+                        size: size
+                    })
+            })
+        })
 
     return "OK"
 }

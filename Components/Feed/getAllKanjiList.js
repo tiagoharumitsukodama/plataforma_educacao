@@ -17,17 +17,19 @@ export default function GetAllKanjiList({setSelectedListName,selectedListName}){
         {
             docs &&
             docs.map(doc => {
+
+            if(doc.size)
                 return (
-                    <button 
-                        key={doc.kanjiList}
-                        type="button"
-                        className="list-group-item list-group-item-action"
-                        onClick={() => setSelectedListName(doc.kanjiList)}
-                    >
-                    { doc.kanjiList }
-                    </button>
-                );
-            })
+                        <button 
+                            key={doc.kanjiList}
+                            type="button"
+                            className="list-group-item list-group-item-action"
+                            onClick={() => setSelectedListName(doc.kanjiList)}
+                        >
+                        { doc.kanjiList }
+                        </button>
+                    );
+                })
         }
         </>
     );

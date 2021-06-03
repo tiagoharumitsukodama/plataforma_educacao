@@ -13,12 +13,7 @@ export default function KanjiList({listName}){
 
     const handleDeleteDoc = async (id) => {
         console.log(`deletando o id: ${id}`)
-        const res = await useFirestoneRemoveItem(listName, id)
-        
-        if( res && docs.length <=1 ){
-            await useFirestoneRemoveItem("allKanjiList", listName)
-            console.log(`Removeu ${listName} da colleção de listas`)
-        }
+        await useFirestoneRemoveItem(listName, id)
     }
 
     return (

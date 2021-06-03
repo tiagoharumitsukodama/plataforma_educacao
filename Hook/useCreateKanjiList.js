@@ -1,23 +1,39 @@
 import { projectFirestore } from "../Repositories/firebase"
 
-export function useCreateNewList( {nameList, newElement, username} ) { 
+export async function useCreateNewList( {nameList, newElement, username} ) { 
     //lista eh uma array
  
     const elements = {...newElement}
     elements.username = username
 
     //references
-    const collectionRef = projectFirestore.collection(nameList)
-    collectionRef.add(elements)
+    const collectionRef = await projectFirestore.collection(nameList)
+    await collectionRef.add(elements)
+
+    const size = await (await collectionRef.get()).size
 
     projectFirestore.collection("allKanjiList")
         .where("kanjiList", "==", nameList)
         .get()
         .then((querySnapshot) => {
 
+            const ref = projectFirestore.collection("allKanjiList")
+
             if(querySnapshot.empty){
-                const ref = projectFirestore.collection("allKanjiList")
-                ref.add({kanjiList: nameList, username: username})
+                ref.add({
+                    kanjiList: nameList, 
+                    username: username, 
+                    size: size
+                })
+            }
+            else{
+                querySnapshot.forEach((doc) => {
+                    ref.doc(doc.id).update({
+                        kanjiList: nameList, 
+                        username: username, 
+                        size: size
+                    })
+                })
             }
         })
         .catch((error) => {
