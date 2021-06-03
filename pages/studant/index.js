@@ -9,7 +9,7 @@ export default function Studant(props){
 
   const user_name = props.props.user_name
   if( !props.props.user_name )
-  console.log(`sem dados`)
+  console.log(`sem dados de usuário`)
 
   return (
       <div className={styles.container}>
