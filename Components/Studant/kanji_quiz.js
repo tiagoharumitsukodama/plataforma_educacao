@@ -12,10 +12,12 @@ export default function Kanji_quiz({docsName}) {
     const [index, setIndex] = useState(0)
     const [msg, setMsg] = useState('')
     const [score, setScore] = useState(0)
+    const [over, setOver] = useState(false)
 
     useEffect(() => {
         setIndex(0)
         setScore(0)
+        setOver(false)
     },[docsName])
 
     useEffect(() => {
@@ -23,7 +25,7 @@ export default function Kanji_quiz({docsName}) {
         setDoc(docs[index])
   
         if( index >= docs.length )
-            setMsg('Fim')
+            setOver(true)
   
     },[docs,index])
 
@@ -44,7 +46,7 @@ export default function Kanji_quiz({docsName}) {
         }
     }
 
-    if(msg === "Fim")
+    if(over)
         return (
             <Score 
             score={score}
