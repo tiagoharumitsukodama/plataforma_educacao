@@ -5,6 +5,14 @@ export default function GetAllKanjiList({setSelectedListName,selectedListName}){
 
     const {docs} = useFirestone("allKanjiList")
 
+    const filter = (collectionName) => {
+
+        if(collectionName == "allKanjis")
+            return false
+        
+        return true
+    }
+
     return (
         <>
         <button 
@@ -18,7 +26,7 @@ export default function GetAllKanjiList({setSelectedListName,selectedListName}){
             docs &&
             docs.map(doc => {
 
-            if(doc.size)
+            if( doc.size && filter(doc.kanjiList) )
                 return (
                         <button 
                             key={doc.kanjiList}

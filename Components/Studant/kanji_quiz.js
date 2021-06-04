@@ -1,10 +1,31 @@
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Card } from "react-bootstrap"
+import { useFirestone } from '../../Hook/useFirestone'
+import Score from './score'
 
-export default function Kanji_quiz({doc, msg, index, score, setMsg, setIndex, setScore}) {
+export default function Kanji_quiz({docsName}) {
 
+    const { docs } = useFirestone(docsName)
     const [attemps, setAttemps] = useState(0)
+    const [doc, setDoc] = useState()
+    const [index, setIndex] = useState(0)
+    const [msg, setMsg] = useState('')
+    const [score, setScore] = useState(0)
+
+    useEffect(() => {
+        setIndex(0)
+        setScore(0)
+    },[docsName])
+
+    useEffect(() => {
+        setMsg('')
+        setDoc(docs[index])
+  
+        if( index >= docs.length )
+            setMsg('Fim')
+  
+    },[docs,index])
 
     const rightQuestion = () => {
         setIndex(index+1)
@@ -21,9 +42,16 @@ export default function Kanji_quiz({doc, msg, index, score, setMsg, setIndex, se
             setAttemps(attemps+1)
             setMsg(`Tentativa ${attemps+1}`)
         }
-        
     }
 
+    if(msg === "Fim")
+        return (
+            <Score 
+            score={score}
+            setIndex={setIndex}
+            setScore={setScore}
+            />
+        );
 
     return (
         <Card style={{ width: '90vw', maxWidth: "500px" }}>
@@ -37,7 +65,7 @@ export default function Kanji_quiz({doc, msg, index, score, setMsg, setIndex, se
             />
         }
         <Card.Body>
-            <Card.Title>Questão: { index }</Card.Title>
+            <Card.Title> Questão: { index }</Card.Title>
             <Card.Text>
                 { msg }
             </Card.Text>

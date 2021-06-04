@@ -14,54 +14,36 @@ export default function Studant(props){
   if( !props.props.user_name )
   console.log(`sem dados`)
 
-  const {docs} = useFirestone("allKanjis")
-  const [index, setIndex] = useState(0)
-  const [msg, setMsg] = useState('')
-  const [doc, setDoc] = useState()
-  const [score, setScore] = useState(0)
 
-  useEffect(() => {
-      setMsg('')
-      setDoc(docs[index])
+  const [collectionName, setCollectionName] = useState("allKanjis")
 
-      if( index >= docs.length )
-          setMsg('Parabéns')
+  /*
+  <Score 
+              score={score}
+              setIndex={setIndex}
+              setScore={setScore}
+            />
+  */
 
-  },[docs,index])
+
   return (
       <div className={styles.container}>
   
         <Nav user={user_name}/>
   
         <main className={styles.main}>
-          <h2>Kanji quiz</h2>
-          <div className={styles.quiz}>
-          {
-              index < docs.length ?
-              <Quiz 
-                doc={doc} 
-                msg={msg}
-                index={index}  
-                score={score}
-                setMsg={setMsg}
-                setIndex={setIndex}
-                setScore={setScore}
-              />
-            : 
-            <Score 
-              score={score}
-              setIndex={setIndex}
-              setScore={setScore}
-            />
-          }
-          </div>
-          
 
-        <div className={styles.aside}>
+          <div className={styles.aside}>
           Lista de exercícios
-          <GetAllKajiList />
-        </div>
+          <GetAllKajiList setSelectedListName={setCollectionName}/>
+          </div>
 
+          <div className={styles.quiz}>
+          <h2>Kanji quiz</h2>
+          <Quiz 
+            docsName={collectionName} 
+          />
+          </div>
         </main>
       
       </div>      
