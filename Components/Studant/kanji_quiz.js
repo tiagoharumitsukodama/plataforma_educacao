@@ -12,21 +12,17 @@ export default function Kanji_quiz({docsName}) {
     const [index, setIndex] = useState(0)
     const [msg, setMsg] = useState('')
     const [score, setScore] = useState(0)
-    const [over, setOver] = useState(false)
 
     useEffect(() => {
         setIndex(0)
         setScore(0)
-        setOver(false)
+
     },[docsName])
 
     useEffect(() => {
         setMsg('')
         setDoc(docs[index])
-  
-        if( index >= docs.length )
-            setOver(true)
-  
+
     },[docs,index])
 
     const rightQuestion = () => {
@@ -46,7 +42,7 @@ export default function Kanji_quiz({docsName}) {
         }
     }
 
-    if(over)
+    if( docs.length && index >= docs.length )
         return (
             <Score 
             score={score}
@@ -54,6 +50,7 @@ export default function Kanji_quiz({docsName}) {
             setScore={setScore}
             />
         );
+
 
     return (
         <Card style={{ width: '90vw', maxWidth: "500px" }}>
