@@ -17,15 +17,6 @@ export default function Studant(props){
 
   const [collectionName, setCollectionName] = useState("allKanjis")
 
-  /*
-  <Score 
-              score={score}
-              setIndex={setIndex}
-              setScore={setScore}
-            />
-  */
-
-
   return (
       <div className={styles.container}>
   
