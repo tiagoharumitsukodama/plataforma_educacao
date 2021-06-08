@@ -1,5 +1,8 @@
 const admin = require('../../../Repositories/firebase-admin')
 
+function check(){
+    return true;
+}
 
 export default async (req, res) => {
 
@@ -8,11 +11,16 @@ export default async (req, res) => {
     }
 
     const uid = req.body.uid
+    const isTeacher = check()
+
+    const additionalClaims = {
+        teacher: isTeacher,
+    }
 
     if( uid ){
         admin
             .auth()
-            .createCustomToken(uid)
+            .createCustomToken(uid, additionalClaims)
             .then((customToken) => {
                 res.status(200).json({authToken: customToken}).end()
             })
