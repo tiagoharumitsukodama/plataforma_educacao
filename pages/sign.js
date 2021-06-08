@@ -1,7 +1,6 @@
 import { Form, Button } from 'react-bootstrap'
 import styles from '../styles/Sign.module.css'
 import Nav from '../Layouts/nav'
-
 import { handleSign } from "../Services/handleSign"
 import { useRef } from "react"
 import { useRouter } from "next/router"
@@ -28,6 +27,7 @@ export default function Sign(){
             displayName: inputName.current.value,
         })
 
+       
         router.push("/login")
     }
 
