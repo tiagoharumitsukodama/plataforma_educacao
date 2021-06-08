@@ -51,7 +51,6 @@ export default function Kanji_quiz({docsName}) {
             />
         );
 
-
     return (
         <Card style={{ width: '90vw', maxWidth: "500px" }}>
         {
