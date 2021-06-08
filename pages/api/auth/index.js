@@ -1,11 +1,11 @@
 const admin = require('../../../Repositories/firebase-admin')
 
-function checkTeacher(){
-    return true;
+function checkTeacher(uid){
+
+    if(uid)
+        return true;
 }
-function checkStudant(){
-    return false;
-}
+
 
 export default async (req, res) => {
 
@@ -14,12 +14,10 @@ export default async (req, res) => {
     }
 
     const uid = req.body.uid
-    const isTeacher = checkTeacher()
-    const isStudant = checkStudant()
+    const isTeacher = checkTeacher(uid)
 
     const additionalClaims = {
         teacher: isTeacher,
-        studant: isStudant
     }
 
     if( uid ){
